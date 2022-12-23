@@ -3,10 +3,6 @@ import Config.ApplicationConfig
 
 @main def hello: Unit = {
   println("Attempting to read ApplicationConfig from file...")
-  val c = readConfig
+  val c = ConfigSource.default.loadOrThrow[ApplicationConfig]
   println(c)
-}
-
-def readConfig = {
-  ConfigSource.default.loadOrThrow[ApplicationConfig]
 }
